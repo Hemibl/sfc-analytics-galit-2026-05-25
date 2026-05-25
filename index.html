@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>מישהי לקפה - דוח אנליטיקס לפגישה עם לבנת | 25.5.2026</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 30px;
+    color: #1f2937;
+    line-height: 1.7;
+    background: #fafafa;
+  }
+  h1 {
+    color: #1f2937;
+    border-bottom: 3px solid #ec4899;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    font-size: 28px;
+  }
+  .subtitle {
+    color: #6b7280;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .meta-line {
+    color: #9ca3af;
+    font-size: 13px;
+    margin-bottom: 32px;
+    font-family: monospace;
+  }
+  h2 {
+    color: #1f2937;
+    border-bottom: 2px solid #ec4899;
+    padding-bottom: 8px;
+    margin-top: 48px;
+    font-size: 22px;
+  }
+  h3 {
+    color: #374151;
+    margin-top: 32px;
+    font-size: 18px;
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .kpi {
+    background: white;
+    border-radius: 10px;
+    padding: 20px 22px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border-right: 4px solid #ec4899;
+  }
+  .kpi-label {
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .kpi-value {
+    color: #1f2937;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .kpi-sub {
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th {
+    background: #f9fafb;
+    color: #374151;
+    text-align: right;
+    padding: 12px 14px;
+    font-weight: 700;
+    border-bottom: 2px solid #e5e7eb;
+    font-size: 14px;
+  }
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 14px;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  td.num { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .glossary {
+    background: white;
+    border-radius: 10px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    margin: 24px 0;
+  }
+  .glossary h3 {
+    margin-top: 0;
+    color: #ec4899;
+    font-size: 16px;
+    border-bottom: 1px solid #fce7f3;
+    padding-bottom: 8px;
+  }
+  .glossary .term {
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .glossary .term:last-child { border-bottom: none; }
+  .glossary .term-name {
+    font-weight: 700;
+    color: #1f2937;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .glossary .term-name code {
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 13px;
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #6b21a8;
+    margin-right: 6px;
+  }
+  .glossary .term-def {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .insight {
+    background: #fff7ed;
+    border-right: 4px solid #f97316;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .insight strong { color: #c2410c; }
+  .red-flag {
+    background: #fef2f2;
+    border-right: 4px solid #dc2626;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .red-flag strong { color: #b91c1c; }
+  .green-flag {
+    background: #f0fdf4;
+    border-right: 4px solid #16a34a;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .green-flag strong { color: #15803d; }
+  .explain {
+    background: #eff6ff;
+    border-right: 4px solid #3b82f6;
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 14px;
+    color: #1e3a8a;
+  }
+  .explain strong { color: #1e40af; }
+  .funnel {
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    margin: 20px 0;
+  }
+  .funnel-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  .funnel-step:last-child { border-bottom: none; }
+  .funnel-step .label {
+    flex: 0 0 280px;
+    font-weight: 600;
+    color: #374151;
+    line-height: 1.4;
+  }
+  .funnel-step .label small { display: block; font-weight: 400; color: #9ca3af; font-size: 11px; margin-top: 2px; }
+  .funnel-step .number { flex: 0 0 90px; font-weight: 700; font-size: 18px; color: #1f2937; font-variant-numeric: tabular-nums; }
+  .funnel-step .pct { flex: 0 0 70px; color: #6b7280; font-size: 13px; font-variant-numeric: tabular-nums; }
+  .funnel-step .bar-wrap { flex: 1; height: 22px; background: #f3f4f6; border-radius: 4px; overflow: hidden; }
+  .funnel-step .bar-fill { height: 100%; background: linear-gradient(90deg, #ec4899, #f97316); border-radius: 4px; }
+  .caveat {
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #6b7280;
+    margin: 16px 0;
+  }
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+  .pill-good { background: #dcfce7; color: #166534; }
+  .pill-warn { background: #fef3c7; color: #92400e; }
+  .pill-bad  { background: #fee2e2; color: #991b1b; }
+  .pill-info { background: #dbeafe; color: #1e40af; }
+  .signature {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .signature .name {
+    font-weight: 700;
+    color: #1f2937;
+    font-size: 15px;
+  }
+  .toc {
+    background: white;
+    padding: 16px 22px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .toc ol { margin: 8px 0 0 0; padding-right: 20px; }
+  .toc li { margin-bottom: 4px; }
+  .toc a { color: #ec4899; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  code { font-family: 'SF Mono', Monaco, monospace; font-size: 13px; background: #f3f4f6; padding: 2px 6px; border-radius: 4px; color: #6b21a8; }
+  .logo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 20px 0 28px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .logo-header img { height: 56px; width: auto; display: block; }
+  .logo-header .divider {
+    width: 1px;
+    height: 48px;
+    background: #d1d5db;
+  }
+  .data-sources {
+    background: white;
+    border-radius: 10px;
+    padding: 18px 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    margin: 24px 0 32px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .data-sources .label {
+    font-weight: 700;
+    color: #374151;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+  .data-sources a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #fce7f3;
+    color: #9d174d;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  .data-sources a:hover { background: #fbcfe8; }
+  .data-sources a.alt { background: #dbeafe; color: #1e40af; }
+  .data-sources a.alt:hover { background: #bfdbfe; }
+</style>
+</head>
+<body>
+
+<div class="logo-header">
+  <img src="sfc-logo.png" alt="מישהי לקפה">
+  <div class="divider"></div>
+  <img src="200apps-logo.jpeg" alt="200Apps">
+</div>
+
+<h1>מישהי לקפה - דוח אנליטיקס</h1>
+<div class="subtitle">לקראת פגישת גלית-לבנת | יום חמישי 28.5.2026</div>
+<div class="meta-line">תקופת מדידה: 27.4.2026 - 24.5.2026 (28 ימים) | מקורות: Firebase Analytics (Production) + FireCMS</div>
+
+<div class="data-sources">
+  <span class="label">מקורות נתונים חיים:</span>
+  <a href="https://console.firebase.google.com/u/0/project/sfc-mobile-e9afd/analytics" target="_blank">
+    🔥 Firebase Analytics (Production)
+  </a>
+  <a href="https://app.firecms.co/p/sfc-mobile-e9afd" target="_blank" class="alt">
+    📊 FireCMS - DB מנהל
+  </a>
+  <a href="https://console.firebase.google.com/u/0/project/sfc-mobile-e9afd/analytics/app/android:branded.m904ad2ff2e9342049ccb7202d6a03d48/events" target="_blank">
+    📈 Events Dashboard
+  </a>
+  <a href="https://app.firecms.co/p/sfc-mobile-e9afd/c/matches" target="_blank" class="alt">
+    ☕ Matches Collection
+  </a>
+</div>
+
+<div class="toc">
+  <strong>תוכן הדוח:</strong>
+  <ol>
+    <li><a href="#glossary">מילון מושגים - חשוב לקרוא קודם</a></li>
+    <li><a href="#tldr">תמונת מצב ב-30 שניות</a></li>
+    <li><a href="#funnel">משפך המרה - מהורדה למפגש</a></li>
+    <li><a href="#users">משתמשות והורדות</a></li>
+    <li><a href="#geo">פילוח גיאוגרפי ומכשירים</a></li>
+    <li><a href="#engagement">Engagement</a></li>
+    <li><a href="#retention">שימור (Retention) - הסיפור הקריטי</a></li>
+    <li><a href="#screens">מסכים מובילים</a></li>
+    <li><a href="#quality">איכות אפליקציה</a></li>
+    <li><a href="#open-questions">שאלות פתוחות שדורשות מענה</a></li>
+    <li><a href="#improvements">הצעות לשיפור - לדיון פנימי ב-200Apps</a></li>
+  </ol>
+</div>
+
+<!-- =================== GLOSSARY =================== -->
+<h2 id="glossary">1. מילון מושגים - חשוב לקרוא קודם</h2>
+
+<p>שני סוגי נתונים שונים במהותם מופיעים בדוח. חשוב להבין את ההבדל:</p>
+
+<div class="glossary">
+  <h3>נתונים מ-Firebase Analytics (התנהגות באפליקציה)</h3>
+
+  <div class="term">
+    <span class="term-name">משתמשות פעילות <code>Active Users</code></span>
+    <span class="term-def">
+      כל משתמשת שפתחה את האפליקציה <strong>לפחות פעם אחת</strong> בתקופה הנמדדת. <strong>זה לא דורש להירשם או למלא פרטים.</strong> מישהי שהורידה את האפליקציה, פתחה אותה לרגע ויצאה - נספרת כפעילה.
+      <br>הגדרות תקופה:
+      <ul style="margin: 6px 0 0 0;">
+        <li><strong>MAU</strong> (Monthly Active Users) - פעילה ב-30 הימים האחרונים</li>
+        <li><strong>WAU</strong> (Weekly) - פעילה ב-7 הימים</li>
+        <li><strong>DAU</strong> (Daily) - פעילה ב-24 שעות</li>
+      </ul>
+    </span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">first_open <code>התקנה חדשה</code></span>
+    <span class="term-def">משתמשת שפתחה את האפליקציה <strong>בפעם הראשונה אי-פעם</strong> במכשיר שלה. זה event חד-פעמי לכל משתמשת. <strong>5,986 התקנות חדשות ב-28 יום = 5,986 אנשים חדשים שהורידו את האפליקציה לראשונה בתקופה הזו.</strong></span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">session_start <code>פתיחת אפליקציה</code></span>
+    <span class="term-def">בכל פעם שמשתמשת פותחת את האפליקציה (לא בפעם הראשונה - בכל פעם). אם אישה פתחה את האפליקציה 4 פעמים היום - יש לה 4 session_start.</span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">screen_view <code>צפייה במסך</code></span>
+    <span class="term-def">בכל פעם שמשתמשת מגיעה למסך באפליקציה. אם היא מנווטת בין 5 מסכים בסשן אחד - יש 5 screen_view.</span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">user_engagement <code>זמן מעורבות</code></span>
+    <span class="term-def">Event שמשודר ברציפות כל זמן שהמשתמשת באמת אקטיבית באפליקציה (לא רק שהיא פתוחה ברקע). זה מה שמאפשר למדוד "זמן ממוצע לסשן".</span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">engaged session <code>סשן איכותי</code></span>
+    <span class="term-def">סשן שנמשך לפחות 10 שניות, או שהיה בו לפחות 1 event מעורבות, או שצפו בו ב-2 מסכים. ב-Google Analytics זה הסטנדרט לסשן "באמת פעיל" (לא מישהי שפתחה ויצאה מיד).</span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">Retention <code>שימור</code></span>
+    <span class="term-def">אחוז המשתמשות שחוזרות לאפליקציה X ימים/שבועות אחרי ההתקנה הראשונה. <strong>Week 1 retention 28%</strong> = מתוך 100 שהורידו לפני שבוע, רק 28 פתחו את האפליקציה השבוע. זה מדד הבריאות הכי חשוב באפליקציה.</span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">Cohort <code>קבוצת השוואה</code></span>
+    <span class="term-def">קבוצת משתמשות שכולן הורידו את האפליקציה באותו פרק זמן (למשל "כל מי שהורידה ב-12-18 באפריל"). משווים את ההתנהגות שלהן לאורך זמן כקבוצה אחת.</span>
+  </div>
+</div>
+
+<div class="glossary">
+  <h3>נתונים מ-FireCMS (הDB - "האמת" של מה שקרה במערכת)</h3>
+
+  <div class="term">
+    <span class="term-name">Users (משתמשות רשומות) <code>2,279 בDB</code></span>
+    <span class="term-def">משתמשות שיש להן רשומה בDB עם <strong>firstName מולא</strong> (כלומר השלימו לפחות חלק מהרישום והכניסו את השם שלהן). זה <strong>סה"כ מצטבר</strong> מאז השקת האפליקציה, לא רק 28 יום.</span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">Matches <code>193 בDB</code></span>
+    <span class="term-def">קשר שאושר בין שתי משתמשות והפך ל"מפגש קפה" בפועל. <strong>זה המדד הקרוב ביותר ל"כמה מפגשים התקיימו".</strong> סה"כ מצטבר.</span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">Interactions <code>1,754 בDB</code></span>
+    <span class="term-def">שיחה שנפתחה בין שתי משתמשות (לא בהכרח הובילה למפגש). סה"כ מצטבר.</span>
+  </div>
+
+  <div class="term">
+    <span class="term-name">Reported User <code>2 בDB</code></span>
+    <span class="term-def">משתמשת שדווחה ע"י משתמשת אחרת (הטרדה, התנהגות לא ראויה וכו').</span>
+  </div>
+</div>
+
+<div class="explain">
+  <strong>ההבדל החשוב ביותר להבנה:</strong>
+  <ul style="margin: 8px 0 0 0;">
+    <li><strong>"משתמשות פעילות" (Firebase)</strong> = כולל את כולן - כולל מי שפתחה ויצאה בלי להירשם</li>
+    <li><strong>"משתמשות רשומות" (FireCMS)</strong> = רק מי שהגיעה לשלב הרישום והכניסה את השם שלה</li>
+  </ul>
+</div>
+
+<!-- =================== TLDR =================== -->
+<h2 id="tldr">2. תמונת מצב ב-30 שניות</h2>
+
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="kpi-label">משתמשות פעילות (MAU, 28 יום)</div>
+    <div class="kpi-value">6,500</div>
+    <div class="kpi-sub">פתחו את האפליקציה לפחות פעם אחת. <strong>לא בהכרח נרשמו.</strong></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">משתמשות רשומות ב-DB</div>
+    <div class="kpi-value">2,279</div>
+    <div class="kpi-sub">השלימו לפחות שם פרטי. <strong>סה"כ מצטבר מאז ההשקה.</strong></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">התקנות חדשות (28 יום)</div>
+    <div class="kpi-value">5,986</div>
+    <div class="kpi-sub">אנשים חדשים שהורידו את האפליקציה לראשונה.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">שיחות שנפתחו (סה"כ)</div>
+    <div class="kpi-value">1,754</div>
+    <div class="kpi-sub">Interactions ב-FireCMS. שיחה בין שתי משתמשות.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">מפגשי קפה שקרו בפועל</div>
+    <div class="kpi-value">43</div>
+    <div class="kpi-sub">לפי דיווח ATTENDED בפידבק. <strong>193 matches בDB אבל רק 43 אומתו כקרו.</strong> ראה הסבר על הפער.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">דיווחים על משתמשות</div>
+    <div class="kpi-value">2</div>
+    <div class="kpi-sub">Reported users - דיווחי הטרדה/התנהגות לא ראויה.</div>
+  </div>
+</div>
+
+<div class="green-flag">
+  <strong>✓ סיפור ההצלחה:</strong> בתוך 28 ימים האפליקציה הגיעה ל-6,500 משתמשות פעילות בישראל. Engagement חזק (12:51 דקות בממוצע לסשן - כלומר מי שכן משתמשת, באמת מעורבת), 100% crash-free, 74% open rate על התראות. הפעילות התחילה ב-7 במאי - יש כאן launch surge מוצלח.
+</div>
+
+<div class="red-flag">
+  <strong>⚠ הסיפור שדורש תשומת לב:</strong>
+  <ul style="margin: 8px 0 0 0;">
+    <li>בין הורדה לבין רישום בפועל - <strong>דליפה של 60%+</strong></li>
+    <li>Retention נופל דרסטית - רק 28% חוזרות שבוע אחרי הורדה, 10% אחרי 3 שבועות, <strong>0% אחרי 4 שבועות</strong></li>
+    <li>מהמעבר מהורדה למפגש קפה אמיתי - רק <strong>3.2% המרה</strong></li>
+  </ul>
+  זה הנושא המרכזי לדיון עם לבנת.
+</div>
+
+<!-- =================== FUNNEL =================== -->
+<h2 id="funnel">3. משפך המרה - מהורדה למפגש קפה</h2>
+
+<p>אנחנו עוקבים אחרי <strong>כל 5,986 ההתקנות החדשות</strong> ב-28 הימים האחרונים - איך הן עברו דרך כל שלב? המספר 5,986 הוא ה-100% - הבסיס. כל שלב במשפך נמדד כאחוז מתוך הבסיס הזה.</p>
+
+<div class="explain">
+  <strong>איך לקרוא את המשפך:</strong> ה-100% הוא <code>first_open</code> (התקנות חדשות, 5,986). כל שלב נמדד כאחוז מתוך התקנות חדשות. בשלבים יש דליפה - חלק עוזבות.
+  <br><br>
+  <strong>הערה חשובה לגבי 78% השלמת שאלון:</strong> שאלון מולא רק בתהליך הרישום, פעם אחת. <strong>הסיבה שיש 2,382 שהתחילו (ולא 5,986)</strong> היא ש-3,600+ אנשים הורידו את האפליקציה ופתחו אותה, אבל מעולם <strong>לא הגיעו</strong> אפילו לשלב השאלון - הם נטשו לפני זה.
+</div>
+
+<div class="funnel">
+  <div class="funnel-step">
+    <div class="label">התקנות חדשות (first_open)<small>אנשים חדשים שהורידו ופתחו</small></div>
+    <div class="number">5,986</div>
+    <div class="pct">100%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 100%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">הגיעו לשלב השאלון<small>questionnaire_started</small></div>
+    <div class="number">2,382</div>
+    <div class="pct">40%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 40%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">השלימו את השאלון<small>questionnaire_completed</small></div>
+    <div class="number">1,863</div>
+    <div class="pct">31%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 31%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">שלחו לפחות הודעה אחת<small>משתמשות ייחודיות עם message_sent</small></div>
+    <div class="number">815</div>
+    <div class="pct">14%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 14%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">יצרו ניסיון קשר<small>connection_created (כוונה ליצור קשר)</small></div>
+    <div class="number">524</div>
+    <div class="pct">9%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 9%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">Matches תוזמנו<small>193 documents ב-FireCMS</small></div>
+    <div class="number">193</div>
+    <div class="pct">3.2%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 3.2%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">מפגשים שקרו בפועל<small>אומתו ATTENDED בפידבק</small></div>
+    <div class="number">43</div>
+    <div class="pct">0.7%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 0.7%"></div></div>
+  </div>
+</div>
+
+<div class="insight">
+  <strong>מסקנה מרכזית מהמשפך:</strong> רק 0.7% מההתקנות החדשות הופכות למפגש קפה שבאמת קרה - כלומר מתוך כל 1,000 הורדות, רק 7 מגיעות בסוף למפגש בפועל.
+  <br><br>
+  <strong>איפה הצוואר הצר הגדול ביותר?</strong>
+  <ul>
+    <li><strong>הורדה ← שאלון (40%):</strong> <span class="pill pill-bad">60% נושרות לפני שמתחילות בכלל</span> - זו הדליפה הגדולה ביותר. <strong>3,600+ אנשים הורידו את האפליקציה ולא ניסו להירשם.</strong></li>
+    <li><strong>שאלון - מהתחלה לסיום (78%):</strong> <span class="pill pill-good">טוב - מי שמתחילה כנראה ממשיכה</span></li>
+    <li><strong>רישום ← שיחה (44%):</strong> מתוך 1,863 שהשלימו שאלון, 815 שלחו הודעה. <span class="pill pill-warn">בינוני - חצי לא יוצרות קשר בכלל</span></li>
+    <li><strong>שיחה ← מפגש בפועל (24%):</strong> 193 מפגשים מתוך 815 ששלחו הודעה. <span class="pill pill-good">סביר - 1 מתוך 4 שיחות הופכת למפגש</span></li>
+  </ul>
+</div>
+
+<div class="explain">
+  <strong>מה זה אומר אסטרטגית?</strong> אם נכפיל את אחוז ההמרה הראשון (הורדה ← התחלת שאלון) מ-40% ל-60%, נכפיל את כמות הרישומים מ-1,863 ל-2,800 בלי לגעת בשום דבר אחר. <strong>זה הצעד עם ה-ROI הגבוה ביותר.</strong>
+</div>
+
+<h3>הפער בין 193 ל-43 - איך הגענו ל-43?</h3>
+
+<p>הנתון "193 matches" הוא <strong>תיעוד DB</strong> של זוגות שהמערכת התאימה ביניהם. אבל "התאמה" לא שווה ל"מפגש שבאמת קרה". הנה הדרך מ-193 ל-43:</p>
+
+<div class="funnel">
+  <div class="funnel-step">
+    <div class="label">Match documents ב-DB<small>זוגות שהמערכת התאימה ביניהן</small></div>
+    <div class="number">193</div>
+    <div class="pct">100%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 100%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">Matches שתואם להן מפגש<small>נקבע מקום + זמן (לא רק התאמה)</small></div>
+    <div class="number">138</div>
+    <div class="pct">71.5%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 71.5%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">מפגשים שתאריכם כבר עבר<small>meetingDate &lt; 25.5.2026</small></div>
+    <div class="number">105</div>
+    <div class="pct">54%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 54%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">מפגשים שקיבלו פידבק<small>לפחות צד אחד מילא משוב</small></div>
+    <div class="number">93</div>
+    <div class="pct">48%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 48%"></div></div>
+  </div>
+  <div class="funnel-step">
+    <div class="label">מפגשים שאומתו כ-ATTENDED<small>לפחות צד אחד אישר שהגיעה</small></div>
+    <div class="number">43</div>
+    <div class="pct">22%</div>
+    <div class="bar-wrap"><div class="bar-fill" style="width: 22%"></div></div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr><th>איפה הם נעלמו?</th><th>כמה</th><th>הסבר</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>55 matches בלי שום מפגש</td>
+      <td class="num">55</td>
+      <td>הזוג התאים, אבל אף אחת לא תיאמה תאריך/מקום. אולי שלב ביניים שלא הסתיים.</td>
+    </tr>
+    <tr>
+      <td>42 מפגשים עתידיים</td>
+      <td class="num">42</td>
+      <td>תאריך המפגש עוד לא הגיע - הם עדיין יכולים לקרות.</td>
+    </tr>
+    <tr>
+      <td>11 בוטלו מראש</td>
+      <td class="num">11</td>
+      <td><code>CANCELLED_IN_ADVANCE</code> - אחת מהמשתתפות ביטלה לפני המועד.</td>
+    </tr>
+    <tr>
+      <td>6 no-show</td>
+      <td class="num">6</td>
+      <td><code>NO_SHOW</code> - אחת מהמשתתפות לא הופיעה.</td>
+    </tr>
+    <tr>
+      <td>12 מפגשים שעברו ללא פידבק</td>
+      <td class="num">12</td>
+      <td>לא נשלח / לא נענה. <strong>לא בטוח אם קרו או לא</strong> - לפי הגישה השמרנית, לא ספרנו אותם.</td>
+    </tr>
+    <tr>
+      <td>13 פידבק חלקי / לא ATTENDED</td>
+      <td class="num">13</td>
+      <td>הצדדים מילאו משוב, אבל אף אחד לא דיווח שהמפגש קרה.</td>
+    </tr>
+    <tr>
+      <td><strong>43 מפגשים שאומתו</strong></td>
+      <td class="num"><strong>43</strong></td>
+      <td><strong>מתוכם 23 אישרו שתי הצדדים</strong> = איכות גבוהה במיוחד.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="insight">
+  <strong>תובנה חשובה:</strong> מתוך 105 מפגשים שתוכננו ותאריכם עבר - <strong>רק 41% התקיימו בפועל</strong>. השאר (62 מפגשים) בוטלו, היו no-show, או לא דיווחו - בכל אופן <strong>לא קרו.</strong>
+  <br><br>
+  כשמדברים על "כמות המפגשים" עם לבנת, חשוב להבחין:
+  <ul>
+    <li>אם מתכוונים ל"זוגות שהמערכת התאימה" - 193</li>
+    <li>אם מתכוונים ל"זוגות שתיאמו פגישה" - 147 (138 matches עם מפגש, מתוכם 4 עם יותר מאחת)</li>
+    <li>אם מתכוונים ל"מפגשים שהיו אמורים לקרות" - 105</li>
+    <li><strong>אם מתכוונים ל"מפגשים שבאמת קרו" - 43</strong></li>
+  </ul>
+</div>
+
+<!-- =================== USERS =================== -->
+<h2 id="users">4. משתמשות והורדות</h2>
+
+<table>
+  <thead>
+    <tr><th>מדד</th><th>ערך</th><th>הסבר</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>משתמשות פעילות ב-30 ימים (MAU)</td><td class="num">6,500</td><td>סה"כ אנשים שפתחו את האפליקציה. שיא ב-13 במאי.</td></tr>
+    <tr><td>משתמשות פעילות ב-7 ימים (WAU)</td><td class="num">1,400</td><td>22% מ-MAU - <strong>כלומר 78% מהפעילות החודשית לא היו פעילות בשבוע האחרון</strong></td></tr>
+    <tr><td>משתמשות פעילות ביום (DAU)</td><td class="num">353</td><td>5% מ-MAU - יחס DAU/MAU של 5% נמוך לאפליקציית רשת חברתית/דייטינג (סטנדרט: 10-20%)</td></tr>
+    <tr><td>משתמשות פעילות עכשיו (30 דק' אחרונות)</td><td class="num">14</td><td>נתון ברגע הנוכחי - לא משמעותי לפגישה</td></tr>
+    <tr><td>התקנות חדשות (first_open, 28 יום)</td><td class="num">5,986</td><td>5,972 משתמשות ייחודיות. <strong>ה-base של המשפך.</strong></td></tr>
+    <tr><td>סה"כ משתמשות רשומות ב-DB</td><td class="num">2,279</td><td>סה"כ מצטבר מאז ההשקה. עם firstName מולא.</td></tr>
+    <tr><td>שאלון - התחילו</td><td class="num">2,382</td><td>40% מההתקנות החדשות הגיעו לשלב השאלון.</td></tr>
+    <tr><td>שאלון - השלימו</td><td class="num">1,863</td><td><span class="pill pill-good">78% השלמה מהמתחילות</span> - <strong>מצוין</strong>. הבעיה היא להגיע להתחיל.</td></tr>
+  </tbody>
+</table>
+
+<div class="explain">
+  <strong>הערה על תאריכי ההשקה:</strong> פעילות אמיתית התחילה ב-7 במאי 2026 (לפני 17 ימים). השיא היה ב-13 במאי. מאז ירידה הדרגתית. <strong>זה launch period, לא pattern לטווח ארוך - עוד מוקדם להסיק מסקנות סופיות.</strong>
+</div>
+
+<!-- =================== GEOGRAPHY =================== -->
+<h2 id="geo">5. פילוח גיאוגרפי ומכשירים</h2>
+
+<h3>מדינות (Active Users)</h3>
+<table>
+  <thead>
+    <tr><th>מדינה</th><th>משתמשות פעילות</th><th>אחוז</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>ישראל</td><td class="num">6,400</td><td><span class="pill pill-info">98%</span></td></tr>
+    <tr><td>ארה"ב</td><td class="num">82</td><td>1.3%</td></tr>
+    <tr><td>יוון</td><td class="num">10</td><td>0.15%</td></tr>
+    <tr><td>איטליה</td><td class="num">7</td><td>0.1%</td></tr>
+    <tr><td>קפריסין</td><td class="num">6</td><td>0.1%</td></tr>
+    <tr><td>בריטניה</td><td class="num">6</td><td>0.1%</td></tr>
+    <tr><td>צרפת</td><td class="num">5</td><td>0.1%</td></tr>
+  </tbody>
+</table>
+
+<h3>מכשירים מובילים (Top 7 by Active Users)</h3>
+<table>
+  <thead>
+    <tr><th>דגם</th><th>משתמשות פעילות</th><th>זיהוי</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>iPhone (כל הדגמים יחד)</td><td class="num">686</td><td>iOS</td></tr>
+    <tr><td>SM-A566B</td><td class="num">251</td><td>Galaxy A56</td></tr>
+    <tr><td>SM-S928B</td><td class="num">212</td><td>Galaxy S24 Ultra</td></tr>
+    <tr><td>SM-A556E</td><td class="num">203</td><td>Galaxy A55</td></tr>
+    <tr><td>SM-S938B</td><td class="num">202</td><td>Galaxy S25 Ultra</td></tr>
+    <tr><td>SM-S926B</td><td class="num">174</td><td>Galaxy S24+</td></tr>
+    <tr><td>SM-S931B</td><td class="num">159</td><td>Galaxy S25</td></tr>
+  </tbody>
+</table>
+
+<div class="explain">
+  <strong>פילוח iOS / Android:</strong> ה-iPhones מופיעים כקבוצה אחת ענקית של 686 משתמשות. ב-Android, Firebase מציג כל דגם בנפרד - כשמסכמים את הדגמים המובילים, Android כנראה גדול יותר (1,200+ משתמשות בTOP-6 בלבד) מ-iOS (686). <strong>אבל זה דורש אישור בExport מלא.</strong>
+</div>
+
+<!-- =================== ENGAGEMENT =================== -->
+<h2 id="engagement">6. Engagement - איכות השימוש</h2>
+
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="kpi-label">זמן ממוצע לסשן</div>
+    <div class="kpi-value">12:51</div>
+    <div class="kpi-sub">12 דקות 51 שניות. <strong>מצוין</strong> - מי שכן משתמשת, באמת מעורבת.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">סשנים איכותיים למשתמשת</div>
+    <div class="kpi-value">2.7</div>
+    <div class="kpi-sub">כל משתמשת פותחת את האפליקציה כ-2.7 פעמים בממוצע (סשנים מעל 10 שניות).</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">סה"כ אירועים שנמדדו</div>
+    <div class="kpi-value">124,660</div>
+    <div class="kpi-sub">19.14 אירועים לכל משתמשת בממוצע.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">פתיחת התראות</div>
+    <div class="kpi-value">74%</div>
+    <div class="kpi-sub">2,612 פתחו מתוך 3,546 שקיבלו. <strong>גבוה מאוד</strong> - הסטנדרט באפליקציות 10-20%.</div>
+  </div>
+</div>
+
+<h3>Top Events (28 ימים)</h3>
+<table>
+  <thead>
+    <tr><th>אירוע</th><th>סה"כ אירועים</th><th>משתמשות ייחודיות</th><th>אירועים למשתמשת</th><th>הסבר</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>user_engagement</td><td class="num">46,969</td><td class="num">6,400</td><td class="num">7.34</td><td>אירועי מעורבות פעילים</td></tr>
+    <tr><td>screen_view</td><td class="num">25,087</td><td class="num">6,335</td><td class="num">3.96</td><td>צפיות במסכים</td></tr>
+    <tr><td>session_start</td><td class="num">20,490</td><td class="num">6,353</td><td class="num">3.23</td><td>פתיחות של האפליקציה</td></tr>
+    <tr><td><strong>message_sent</strong></td><td class="num">6,984</td><td class="num">815</td><td class="num">8.58</td><td><strong>רק 815 משתמשות שלחו הודעות, אבל הן שלחו הרבה (8.58 לאחת)</strong></td></tr>
+    <tr><td>first_open</td><td class="num">5,986</td><td class="num">5,972</td><td class="num">1.00</td><td>התקנות חדשות</td></tr>
+    <tr><td>notification_receive</td><td class="num">3,546</td><td class="num">697</td><td class="num">5.88</td><td>קבלת התראות</td></tr>
+    <tr><td><strong>connection_created</strong></td><td class="num">3,248</td><td class="num">524</td><td class="num">6.21</td><td><strong>524 משתמשות ניסו ליצור קשר (כל אחת 6 פעמים בממוצע)</strong></td></tr>
+    <tr><td>questionnaire_completed</td><td class="num">2,995</td><td class="num">1,863</td><td class="num">1.61</td><td>השלמת שאלון</td></tr>
+    <tr><td>notification_open</td><td class="num">2,612</td><td class="num">611</td><td class="num">4.55</td><td>פתיחת התראות</td></tr>
+    <tr><td>questionnaire_started</td><td class="num">2,413</td><td class="num">2,382</td><td class="num">1.01</td><td>התחלת שאלון</td></tr>
+  </tbody>
+</table>
+
+<div class="insight">
+  <strong>תובנות מהאירועים:</strong>
+  <ul>
+    <li><strong>"Power Users" pattern:</strong> 815 משתמשות שולחות הודעות, אבל הן שולחות 8.58 הודעות לאחת בממוצע - כלומר יש קבוצה קטנה מאוד פעילה. רוב המשתמשות לא מדברות עם אף אחד.</li>
+    <li><strong>connection_created (3,248 events) מול Matches בDB (193):</strong> פער ענק. כנראה connection_created הוא "ניסיון/כוונה ליצור קשר" (לחיצה על "להזמין מישהי"), ורק קצת מזה מבשיל למפגש שמאושר על-ידי שני הצדדים ונרשם ב-Matches.</li>
+    <li><strong>78% השלמת שאלון:</strong> מעולה. הבעיה <strong>לא</strong> בשאלון עצמו - היא בלהגיע להתחיל אותו.</li>
+  </ul>
+</div>
+
+<!-- =================== RETENTION =================== -->
+<h2 id="retention">7. Retention - הסיפור הקריטי</h2>
+
+<div class="explain">
+  <strong>איך לקרוא את הטבלה הבאה:</strong> Cohort ניתוח - לוקחים את כל מי שהורידה את האפליקציה בשבוע מסוים, ובודקים כמה מהן חוזרות לאפליקציה בכל שבוע אח"כ. Week 0 הוא תמיד 100% (בעצם ההגדרה - היא הורידה). Week 1 הוא כמה חזרו שבוע אחרי.
+</div>
+
+<table>
+  <thead>
+    <tr><th>שבוע</th><th>אחוז שנשארו פעילות</th><th>הערכה</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Week 0 (שבוע ההורדה)</td><td class="num">100%</td><td><span class="pill pill-info">base - כולן בהגדרה</span></td></tr>
+    <tr><td>Week 1 (שבוע אחרי)</td><td class="num">27.9%</td><td><span class="pill pill-warn">בינוני - הסטנדרט באפליקציות חברתיות 25-35%</span></td></tr>
+    <tr><td>Week 2</td><td class="num">22.6%</td><td><span class="pill pill-warn">בינוני</span></td></tr>
+    <tr><td>Week 3</td><td class="num">10.3%</td><td><span class="pill pill-bad">נמוך</span></td></tr>
+    <tr><td>Week 4</td><td class="num">0%</td><td><span class="pill pill-bad">נושרות לחלוטין</span></td></tr>
+    <tr><td>Week 5</td><td class="num">0%</td><td><span class="pill pill-bad">נושרות לחלוטין</span></td></tr>
+  </tbody>
+</table>
+
+<div class="red-flag">
+  <strong>הנושא הכי חשוב לדיון עם לבנת:</strong>
+  <br><br>
+  72% מהמשתמשות לא חוזרות שבוע אחרי ההורדה. אחרי 3 שבועות נשארות פחות מ-11%. אחרי 4 שבועות - אפס.
+  <br><br>
+  זה לא בלתי נדיר באפליקציות דייטינג/חברתיות חדשות (אנשים מורידים, ממהרים לנסות, ועוזבים), אבל זה דורש אסטרטגיה ברורה:
+  <ul>
+    <li><strong>למה הן עוזבות?</strong> השלימו רישום אבל לא קיבלו ערך? המתינו ולא קיבלו שיחה? יש סקר exit?</li>
+    <li><strong>מה ה-trigger לחזרה?</strong> התראות עובדות (74% open rate!) - אבל מה התוכן? האם רלוונטי?</li>
+    <li><strong>האם יש סגמנט שכן נשאר?</strong> ה-Power Users (815 ששולחות הודעות) - מה מבדיל אותן? איך משכפלים?</li>
+  </ul>
+  <br>
+  <strong>חשוב לזכור:</strong> Week 0 כאן הוא משתמשות שהורידו לפני 4-5 שבועות (אמצע אפריל). הSTart האמיתי של הפעילות היה 7 במאי. ייתכן ש-cohorts מאוחרים יותר ייראו טוב יותר עם פיצ'רים שהושקו אחרי.
+</div>
+
+<!-- =================== SCREENS =================== -->
+<h2 id="screens">8. מסכים מובילים</h2>
+
+<table>
+  <thead>
+    <tr><th>מסך</th><th>צפיות (28 יום)</th><th>פלטפורמה</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>MainActivity</td><td class="num">16,000</td><td>Android - מסך ראשי</td></tr>
+    <tr><td>ComposeHostingViewController</td><td class="num">7,900</td><td>iOS - מסך ראשי (מבוסס SwiftUI)</td></tr>
+    <tr><td>PHPickerViewController</td><td class="num">1,300</td><td>iOS - בחירת תמונות מהגלריה</td></tr>
+    <tr><td>RecaptchaActivity</td><td class="num">80</td><td>Android - אימות אנושי</td></tr>
+    <tr><td>LicenseActivity</td><td class="num">61</td><td>Android - תנאי שימוש</td></tr>
+    <tr><td>SFSafariViewController</td><td class="num">12</td><td>iOS - דפדפן פנימי (פתיחת לינקים)</td></tr>
+  </tbody>
+</table>
+
+<div class="caveat">
+  <strong>הערה חשובה לדיון עם לבנת:</strong> שמות המסכים הם generic (Activity / ViewController) - שמות טכניים, לא שמות הפיצ'רים. אנחנו <strong>לא יכולים לדעת מהדוח הזה</strong> אילו מסכים ספציפיים נצפים (פרופיל, רשימת התאמות, צ'אט, וכו'). כדי לראות זאת, צריך לבקש מהדבעלופרים להוסיף <code>screen_name</code> מותאם לכל אירוע <code>screen_view</code>. <strong>זה pending - מומלץ לפתוח כרטיס.</strong>
+</div>
+
+<!-- =================== QUALITY =================== -->
+<h2 id="quality">9. איכות אפליקציה</h2>
+
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="kpi-label">Crash-free users</div>
+    <div class="kpi-value" style="color: #16a34a;">100%</div>
+    <div class="kpi-sub">בשתי האפליקציות (iOS + Android). אפס באגים שמעיפים את האפליקציה.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">גרסה מובילה</div>
+    <div class="kpi-value" style="font-size: 22px;">3.0.4</div>
+    <div class="kpi-sub">someone.for.coffee (Android). iOS האחרון: 2.111100.5.</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">דיווחים על משתמשות</div>
+    <div class="kpi-value">2</div>
+    <div class="kpi-sub">Reported users. נמוך מאוד - יכול להיות בריא או יכול להיות שהפיצ'ר לא בולט מספיק.</div>
+  </div>
+</div>
+
+<div class="green-flag">
+  <strong>איכות טכנית מצוינת:</strong> 100% crash-free על שתי הפלטפורמות, אפס באגים קריטיים. שתי הגרסאות האחרונות (2.111100.5 ל-iOS ו-3.0.4 ל-Android) השתחררו בהצלחה.
+</div>
+
+<!-- =================== OPEN QUESTIONS =================== -->
+<h2 id="open-questions">10. שאלות פתוחות שדורשות מענה לפני הפגישה</h2>
+
+<table>
+  <thead>
+    <tr><th>שאלה</th><th>מה צריך</th><th>איפה לבדוק</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>כמה משתמשות מחקו חשבון?</td>
+      <td>לחפש בUsers collection field כמו <code>deleted</code> או <code>disabled</code> או <code>active</code></td>
+      <td>FireCMS - users + filtering</td>
+    </tr>
+    <tr>
+      <td>מי המשתמשות הכי פעילות (שמות)?</td>
+      <td>לבחון את הקשרים בFireCMS Matches/Interactions ולמצוא top users</td>
+      <td>FireCMS - matches sorted by user_id</td>
+    </tr>
+    <tr>
+      <td>למה ה-retention מתרסק אחרי שבוע?</td>
+      <td>סקר משתמשות שעזבו / Sentry / pre-deletion events</td>
+      <td>לתכנן סקר ייעודי - 5-10 שאלות בwhatsApp</td>
+    </tr>
+    <tr>
+      <td>מסכים ספציפיים (לא generic)</td>
+      <td>לתאם עם אלכס/יוחבד שיוסיפו screen_name מותאם לאירועי screen_view</td>
+      <td>פתיחת כרטיס SFC חדש</td>
+    </tr>
+    <tr>
+      <td>פילוח גילאים של משתמשות פעילות</td>
+      <td>לבדוק בFireCMS את שדה תאריך הלידה ולחשב התפלגות גיל</td>
+      <td>FireCMS users + Custom report</td>
+    </tr>
+    <tr>
+      <td>חודש ראשון של פעילות אורגנית</td>
+      <td>לחזור על הניתוח עוד 30 יום (post-launch surge)</td>
+      <td>תזכורת לתאריך 25.6.2026</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>נקודות לדיון עם לבנת</h2>
+
+<div class="insight">
+  <strong>3 שאלות אסטרטגיות שכדאי להעלות:</strong>
+  <ol>
+    <li><strong>הנטישה לפני השאלון (60% מההורדות):</strong> מה קורה בין רגע ההורדה לרגע שמתחילות שאלון? יש Onboarding ארוך מדי? אישור הרשאות שדוחה? מסך ביניים שמבלבל? <strong>הנתון הזה צריך לבדיקת UX מעמיקה.</strong></li>
+    <li><strong>Retention שבוע 1:</strong> מה הערך שמשתמשת אמורה לקבל ב-3-7 ימים אחרי הרישום? האם היא מקבלת אותו בפועל? אם לא מקבלת התאמה תוך 48 שעות - היא נופלת.</li>
+    <li><strong>Power Users vs Casual:</strong> 815 משתמשות אקטיביות מאוד (8.58 הודעות בממוצע). מה מבדיל אותן מהרוב השקט? איך משכפלים את הDNA שלהן?</li>
+  </ol>
+</div>
+
+<h2 id="improvements" style="border-bottom-color: #6366f1;">11. הצעות לשיפור - לדיון פנימי ב-200Apps</h2>
+
+<div class="caveat">
+  <strong>הסבר:</strong> סקציה זו <strong>נפרדת מהדוח הרשמי לגלית/לבנת.</strong> אלה רעיונות שעולים מתוך הנתונים - דברים שבמסגרת 200Apps נוכל לבחון, להציע, או להוביל מולן. לא הכל מתאים להציע ללקוחה - חלק זה תפקיד פנימי שלנו לזהות הזדמנויות.
+</div>
+
+<h3>1. חוויית Onboarding - העדיפות העליונה</h3>
+<p><strong>הבעיה:</strong> 60% מההורדות לא מגיעות אפילו להתחיל שאלון (3,600+ אנשים בחודש).</p>
+<table>
+  <thead>
+    <tr><th>הצעה</th><th>למה</th><th>השפעה משוערת</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>מסך ערך לפני רישום</strong> - "ראו מי בקהילה שלכן" עם פרופילים מטושטשים</td>
+      <td>אנשים לא יודעים מה הם מקבלים. ערך לפני מחויבות = יותר נכונות להירשם.</td>
+      <td>+15-25% המרה לרישום</td>
+    </tr>
+    <tr>
+      <td><strong>גוגל/אפל Sign-In במקום שאלון מלא בהתחלה</strong></td>
+      <td>הורדה של friction. שאלון יכול להגיע אחרי שכבר נכנסו והבינו את הערך.</td>
+      <td>+10-20% המרה</td>
+    </tr>
+    <tr>
+      <td><strong>מד התקדמות ב-questionnaire</strong> ("שלב 3 מתוך 7")</td>
+      <td>מי שיודעת כמה נשאר - לא נשברת באמצע.</td>
+      <td>+5-10% השלמה</td>
+    </tr>
+    <tr>
+      <td><strong>screen_name מותאם לכל מסך</strong> (דחוף לדעלופרים)</td>
+      <td>בלי זה - לא נדע לעולם איפה בדיוק בOnboarding הן נופלות.</td>
+      <td>אפשרות לאיתור מדויק של נקודות דליפה</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>2. Activation - מהרשמה לשיחה ראשונה</h3>
+<p><strong>הבעיה:</strong> רק 12.5% מהמשתמשות הפעילות שולחות הודעה. ה-87.5% האחרות "מסתכלות" בלי לפעול.</p>
+<table>
+  <thead>
+    <tr><th>הצעה</th><th>למה</th><th>השפעה משוערת</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>תזכורות יומיות / שבועיות עם המלצות</strong> ("מצאנו לך 3 שיכולות להתאים")</td>
+      <td>74% open rate על התראות - הקהל פתוח לקבל פניות.</td>
+      <td>+20-30% הודעות נשלחות</td>
+    </tr>
+    <tr>
+      <td><strong>Icebreakers / templates להודעה ראשונה</strong></td>
+      <td>"מה לכתוב?" זה חסם פסיכולוגי. תבניות מפחיתות חיכוך.</td>
+      <td>+15-25% פתיחת שיחה</td>
+    </tr>
+    <tr>
+      <td><strong>סימון "פעילה כעת"</strong> על פרופילים</td>
+      <td>נשים יותר נוטות לפנות למישהי שזמינה.</td>
+      <td>+10-20% תגובות</td>
+    </tr>
+    <tr>
+      <td><strong>"חיווי על קריאת הודעה"</strong> כמו ב-Whatsapp</td>
+      <td>היום אחת ששולחת לא יודעת אם נקרא. תחושת "אולי תענה" עוצרת אותה.</td>
+      <td>שיפור איכותי בחוויה</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>3. Retention - הקרב הקריטי</h3>
+<p><strong>הבעיה:</strong> 0% המשתמשות נשארות אחרי 4 שבועות. אחרי 3 שבועות - רק 10%.</p>
+<table>
+  <thead>
+    <tr><th>הצעה</th><th>למה</th><th>השפעה משוערת</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>קמפיין re-engagement ביום 7 ו-14</strong></td>
+      <td>נופלות בין שבוע 1 ל-2. התראה בזמן הנכון יכולה להחזיר חלק.</td>
+      <td>+5-10 נקודות אחוז Retention W2</td>
+    </tr>
+    <tr>
+      <td><strong>"You've been missed" מייל / push</strong></td>
+      <td>תחושת missing = trigger רגשי.</td>
+      <td>2-5% חזרה</td>
+    </tr>
+    <tr>
+      <td><strong>Streaks / נקודות אור על מעורבות</strong> (לא רק מפגשים)</td>
+      <td>גימיפיקציה מחזיקה אנשים שעדיין לא קיבלו את הערך המלא.</td>
+      <td>שיפור אורגני</td>
+    </tr>
+    <tr>
+      <td><strong>סקר exit ל-cohort שעוזב</strong> (5 שאלות)</td>
+      <td>בלי לדעת למה - אי אפשר לתקן.</td>
+      <td>insight חיוני</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>4. Meeting Completion - השיפור הכי חשוב</h3>
+<p><strong>הבעיה:</strong> רק 41% מהמפגשים שנקבעו באמת קרו. השאר - 11 בוטלו, 6 no-show, 12 ללא פידבק.</p>
+<table>
+  <thead>
+    <tr><th>הצעה</th><th>למה</th><th>השפעה משוערת</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>תזכורת 24 שעות לפני</strong> (WhatsApp + Push)</td>
+      <td>הרבה ביטולים קורים בשעות האחרונות. תזכורת מוקדמת מאפשרת תיאום מחדש.</td>
+      <td>הפחתת no-show ב-30-50%</td>
+    </tr>
+    <tr>
+      <td><strong>תזכורת בבוקר היום עצמו</strong></td>
+      <td>"היום בשעה X את נפגשת עם Y" - גם מעלה ציפיות.</td>
+      <td>הפחתת no-show נוספת</td>
+    </tr>
+    <tr>
+      <td><strong>אישור הדדי 24h לפני</strong> ("מאשרת שאת מגיעה?")</td>
+      <td>מי שלא מאשרת - אפשר לבטל מוקדם ולחסוך לצד השני זמן.</td>
+      <td>פחות ביטולים מאוחרים</td>
+    </tr>
+    <tr>
+      <td><strong>פלואו "תיאום מחדש" קל</strong> (לחיצה אחת)</td>
+      <td>אם זה קשה - מבטלים. אם זה קל - מתאמים מחדש.</td>
+      <td>שמירה על Match במקום איבוד שלו</td>
+    </tr>
+    <tr>
+      <td><strong>"איכות" מצטברת ב-Profile</strong> (״הגיעה למפגשים״)</td>
+      <td>תמריץ חברתי לא לבטל ולא לעשות no-show.</td>
+      <td>שיפור איכותי</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>5. איסוף Feedback - אנחנו עיוורות חלקית</h3>
+<p><strong>הבעיה:</strong> 12 מפגשים שעברו - אין שום פידבק. אנחנו לא יודעות אם קרו.</p>
+<table>
+  <thead>
+    <tr><th>הצעה</th><th>למה</th><th>השפעה משוערת</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>פלואו פידבק 1-לחיצה</strong> ("הגעת? כן/לא")</td>
+      <td>שאלה אחת = הרבה יותר תגובות מאשר מילוי טופס.</td>
+      <td>+30-50% תגובת פידבק</td>
+    </tr>
+    <tr>
+      <td><strong>תמריץ קטן למילוי</strong> (נקודה אחת, "Match הבא מהיר יותר")</td>
+      <td>קצת תמריץ - מספיק לאלה שעל הגדר.</td>
+      <td>+10-20% נוסף</td>
+    </tr>
+    <tr>
+      <td><strong>אם פידבק חסר אחרי 48h - תזכורת אחת</strong></td>
+      <td>שכחו - יותר מאשר לא רוצות.</td>
+      <td>+15% גילוי מפגשים שקרו</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>6. תשתית מדידה - השקעה ארוכת טווח</h3>
+<p><strong>הבעיה:</strong> חסרות לנו metrics חיוניות כדי לקבל החלטות מבוססות נתונים.</p>
+<table>
+  <thead>
+    <tr><th>הצעה</th><th>למה</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>screen_name לכל screen_view</strong></td>
+      <td>בלי זה לא נדע איזה מסך גורם לנטישה.</td>
+    </tr>
+    <tr>
+      <td><strong>account_deleted event</strong> מותאם</td>
+      <td>היום אין דרך לראות גרף של מחיקות.</td>
+    </tr>
+    <tr>
+      <td><strong>onboarding_step_completed</strong> לכל שלב</td>
+      <td>נראה איפה בדיוק נופלים ב-Onboarding (לא רק "שאלון התחיל/נגמר").</td>
+    </tr>
+    <tr>
+      <td><strong>פתיחת חשבון Google Analytics 4</strong> נפרד</td>
+      <td>Funnels מותאמים, Audiences, User Explorer.</td>
+    </tr>
+    <tr>
+      <td><strong>דשבורד שבועי קבוע</strong> (Looker Studio / מעין-זה)</td>
+      <td>אם הנתונים האלה היו נמצאים מול גלית בכל שבוע - השיחות שלה היו אחרות לגמרי.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>סדר עדיפויות מוצע</h3>
+
+<div class="insight">
+  <strong>אם היו לי 3 דברים לעשות לפני הכל:</strong>
+  <ol>
+    <li><strong>תזכורת 24h לפני מפגש</strong> (השפעה גבוהה, מאמץ פיתוח נמוך, ROI מיידי במספר המפגשים)</li>
+    <li><strong>screen_name לכל מסך + onboarding step events</strong> (בלי זה אנחנו טסות עיוורות בכל שיפור עתידי)</li>
+    <li><strong>סקר exit למשתמשות נושרות</strong> (חיוני כדי להבין למה ה-Retention מתרסק)</li>
+  </ol>
+  <br>
+  <strong>הצעדים האלה - יחד - יכולים לשנות לחלוטין את התמונה תוך 6-8 שבועות.</strong>
+</div>
+
+<div class="signature">
+  <div class="name">חמי בן לביא</div>
+  <div>Head of Product Operations</div>
+  <div>200Apps</div>
+</div>
+
+</body>
+</html>
